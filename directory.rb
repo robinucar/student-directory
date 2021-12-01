@@ -19,7 +19,7 @@ end
 def print(students)
     students.each_with_index do |student, index|
         special_student = student[:name].split("")
-        if special_student[0] == "m"
+        if special_student.length < 12
             puts "#{index + 1}. #{student[:name]} (#{student[:cohort]}) cohort"
         end
     end
