@@ -18,7 +18,10 @@ def print_header
 end
 def print(students)
     students.each_with_index do |student, index|
-        puts "#{index + 1}. #{student[:name]} (#{student[:cohort]}) cohort"
+        special_student = student[:name].split("")
+        if special_student[0] == "m"
+            puts "#{index + 1}. #{student[:name]} (#{student[:cohort]}) cohort"
+        end
     end
 end
 #finally we print the total number of students
