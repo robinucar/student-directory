@@ -40,7 +40,7 @@ def print(names)
 end
 #finally we print the total number of students
 def print_footer(names)
-    puts "Overall, we have #{names.count} great students"
+    puts "Overall, we have #{names.count} great students".center(45)
 end
 
 print_header
