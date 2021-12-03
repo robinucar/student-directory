@@ -20,7 +20,7 @@ def print(names)
     index = 0
     while index < names.length 
         current_name = names[index]
-        puts "#{current_name[:name]} (#{current_name[:cohort]}) cohort"
+        puts "#{index + 1} #{current_name[:name]} (#{current_name[:cohort]}) cohort"
         index += 1
         end
  
