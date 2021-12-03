@@ -18,11 +18,11 @@ def print_header
 end
 def print(names)
     index = 0
-    until index >= names.length 
+    while index < names.length 
         current_name = names[index]
         puts "#{current_name[:name]} (#{current_name[:cohort]}) cohort"
         index += 1
-    end
+        end
  
 end
 #finally we print the total number of students
