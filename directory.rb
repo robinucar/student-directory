@@ -2,7 +2,7 @@ def input_students
     puts "Please enter the names of the students"
     puts "To finish, just hit return twice"
     students = []
-    name = gets.chomp
+    name = gets.chomp.to_s
     while !name.empty? do
         students << {name: name, cohort: :november}
         puts "Now we have #{students.count} students"
@@ -16,13 +16,14 @@ def print_header
     puts "The students of Villiains Academy"
     puts "--------------"
 end
-def print(students)
-    students.each_with_index do |student, index|
-        special_student = student[:name].split("")
-        if special_student.length < 12
-            puts "#{index + 1}. #{student[:name]} (#{student[:cohort]}) cohort"
-        end
+def print(names)
+    index = 0
+    until index >= names.length 
+        current_name = names[index]
+        puts "#{current_name[:name]} (#{current_name[:cohort]}) cohort"
+        index += 1
     end
+ 
 end
 #finally we print the total number of students
 def print_footer(names)
