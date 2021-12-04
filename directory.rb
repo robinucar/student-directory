@@ -18,7 +18,11 @@ def input_students
         puts "Please enter the nationality of student:"
         nationality = gets.chomp.to_s
         students << {name: name, age: age, gender: gender, nationality: nationality, cohort: cohort}
-        puts "Now we have #{students.count} students"
+        if students.count == 1
+            puts "Now we have #{students.count} student."
+        else
+            puts "Now we have #{students.count} students."
+        end
         puts "Please enter the name of another student. To finish just hit the return!"
         name = gets.chomp
     end
@@ -48,7 +52,11 @@ end
 
 #finally we print the total number of students
 def print_footer(names)
-    puts "Overall, we have #{names.count} great students".center(45)
+    if names.count == 1
+        puts "Overall, we have #{names.count} great student.".center(45)
+    else
+        puts "Overall, we have #{names.count} great students.".center(45)
+    end
 end
 
 
