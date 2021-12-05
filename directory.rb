@@ -52,7 +52,9 @@ end
 
 #finally we print the total number of students
 def print_footer(names)
-    if names.count == 1
+    if names.count == 0
+        puts "We do not have any students yet"
+    elsif names.count == 1
         puts "Overall, we have #{names.count} great student.".center(45)
     else
         puts "Overall, we have #{names.count} great students.".center(45)
@@ -66,11 +68,17 @@ print_footer(students)
 
 #grouping students by chort
 def group_by_cohort(students)
-    puts "Please type the cohort you want to see"
-    month = gets.chomp.capitalize().to_sym
-    group = students.select { |student| student[:cohort].capitalize() == month }
-    group.each do |key, value|
-        puts "#{key}: #{value}"
+    if students.length > 0
+        puts "Please type the cohort you want to see."
+        month = gets.chomp.capitalize().to_sym
+        group = students.select { |student| student[:cohort].capitalize() == month }
+        if group.length > 0
+                group.each do |key, value|
+                puts "#{key}: #{value}"
+            end
+        else
+            puts "There is not any student in #{month.capitalize()} cohort."
+        end
     end
 end
 
