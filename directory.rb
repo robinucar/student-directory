@@ -34,12 +34,12 @@ end
 def interactive_menu
    loop do
         print_menu
-        process(gets.chomp)
+        process(STDIN.gets.chomp)
    end
 end
 def input_students
     puts "Please enter the full name of the student:"
-    name = gets.chomp.to_sym
+    name = STDIN.gets.chomp.to_sym
     while !name.empty? do
         puts "Please type the student joined cohort:"
         cohort = gets.chomp.to_sym
@@ -61,7 +61,7 @@ def input_students
             puts "Now we have #{@students.count} students."
         end
         puts "Please enter the name of another student. To finish just hit the return!"
-        name = gets.chomp
+        name = STDIN.gets.chomp
     end
     @students
 end
@@ -117,11 +117,24 @@ def load_students(filename = "students.csv")
     end
     file.close
 end
+
+#try loading students
+def try_load_students
+    filename = ARGV.first# first argument from the command line
+    return if filename.nil? # get out of the method if it isn't given
+    if File.exists?(filename) # if it exists
+      load_students(filename)
+       puts "Loaded #{@students.count} from #{filename}"
+    else # if it doesn't exist
+      puts "Sorry, #{filename} doesn't exist."
+      exit # quit the program
+    end
+  end
 #grouping students by chort
 def group_by_cohort
     if @students.length > 0
         puts "Please type the cohort you want to see."
-        month = gets.chomp.capitalize().to_sym
+        month = STDIN.gets.chomp.capitalize().to_sym
         group = @students.select { |student| student[:cohort].capitalize() == month }
         if group.length > 0
                 group.each do |key, value|
@@ -132,5 +145,5 @@ def group_by_cohort
         end
     end
 end
-
+try_load_students
 interactive_menu
