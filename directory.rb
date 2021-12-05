@@ -59,7 +59,7 @@ def input_students
     end
     @students
 end
-@students = input_students
+
 #and then print them
 def print_header
     puts "The students of Villiains Academy"
